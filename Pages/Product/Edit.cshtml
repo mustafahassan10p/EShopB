@@ -1,0 +1,37 @@
+﻿@page
+@model EShopCoreBRazorApp.Pages.Product.EditModel
+@{
+}
+
+<h1>
+    Edit Product New Product
+</h1>
+<form method="post">
+    <input type="hidden" asp-for="products.ProductId" />
+    <table class="table">
+        <tbody>
+            <tr>
+                <td><label asp-for="products.ProductName"></label></td>
+                <td><input asp-for="products.ProductName" /></td>
+            </tr>
+            <tr>
+                <td><label asp-for="products.Qty"></label></td>
+                <td><input asp-for="products.Qty" /></td>
+            </tr>
+            <tr>
+                <td><label asp-for="products.Price"></label></td>
+                <td><input asp-for="products.Price" /></td>
+            </tr>
+            <tr>
+                <td><label asp-for="products.CreatedDateTime"></label></td>
+                <td><input asp-for="products.CreatedDateTime" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Save" />
+                    <a asp-page="./Index">Back</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
