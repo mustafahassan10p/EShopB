@@ -19,7 +19,22 @@ namespace EShopCoreBRazorApp.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("EShopCoreBRazorApp.Model.Product", b =>
+            modelBuilder.Entity("EShopCoreBRazorApp.Model.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("EShopCoreBRazorApp.Model.Products", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -39,9 +54,28 @@ namespace EShopCoreBRazorApp.Migrations
                     b.Property<int>("Qty")
                         .HasColumnType("int");
 
+                    b.Property<int?>("categoryId")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductId");
 
+                    b.HasIndex("categoryId");
+
                     b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("EShopCoreBRazorApp.Model.Products", b =>
+                {
+                    b.HasOne("EShopCoreBRazorApp.Model.Category", "category")
+                        .WithMany("Products")
+                        .HasForeignKey("categoryId");
+
+                    b.Navigation("category");
+                });
+
+            modelBuilder.Entity("EShopCoreBRazorApp.Model.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

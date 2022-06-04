@@ -28,5 +28,7 @@ namespace EShopCoreBRazorApp.Model
         [DisplayName("Created Date")]
         [Required]
         public DateTime CreatedDateTime { get; set; }
+
+        public Category category { get; set; }
     }
 }

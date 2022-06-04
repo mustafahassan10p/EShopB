@@ -14,5 +14,6 @@ namespace EShopCoreBRazorApp.Data
         }
 
         public DbSet<Products> Product => Set<Products>();
+        public DbSet<Category> Categories => Set<Category>();
     }
 }
